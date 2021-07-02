@@ -3,6 +3,7 @@
 namespace Bhavinjr\Postal\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Bhavinjr\Postal\Postal;
 
 class PostalServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class PostalServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        $this->app->singleton('postal', Postal::class);
     }
 
     public function provides()
