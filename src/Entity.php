@@ -8,6 +8,8 @@ class Entity extends Api
 
     const RESPONSE_SUCCESS  = 'Success';
 
+    const EMPTY_MESSAGE     = 'No records found';
+
     protected function find($method, $pincode)
     {
         $payloadUri = $this->getFullUrl().'/'.$pincode;
@@ -34,7 +36,12 @@ class Entity extends Api
 
         if (isset($response['Status'])) {
             if ($response['Status'] == self::RESPONSE_ERROR) {
-                throw new Errors\BadRequestError($response['Message'], 404);
+                return [
+                    'status'    => strtolower(self::RESPONSE_ERROR),
+                    'message'   => self::EMPTY_MESSAGE,
+                    'data'      => [],
+                ];
+                // throw new Errors\BadRequestError($response['Message'], 404);
             }
         }
 
