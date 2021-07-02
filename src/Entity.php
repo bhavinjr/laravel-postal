@@ -10,9 +10,16 @@ class Entity extends Api
 
     const EMPTY_MESSAGE     = 'No records found';
 
-    protected function find($method, $pincode)
+    protected function findByCode($method, $pincode)
     {
-        $payloadUri = $this->getFullUrl().'/'.$pincode;
+        $payloadUri = $this->getFullUrl().'pincode/'.$pincode;
+
+        return $this->request($method, $payloadUri);
+    }
+
+    protected function findByBranch($method, $name)
+    {
+        $payloadUri = $this->getFullUrl().'postoffice/'.$name;
 
         return $this->request($method, $payloadUri);
     }
