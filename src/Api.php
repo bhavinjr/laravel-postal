@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 
 class Api
 {
-    protected $baseUrl 	= 'https://api.postalpincode.in/pincode/';
+    protected $baseUrl 	= 'https://api.postalpincode.in/';
 
     /**
      * @var Client

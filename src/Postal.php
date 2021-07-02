@@ -9,7 +9,7 @@ class Postal extends Entity
     public function findByCode($pincode)
     {
         try {
-            return $this->findByCode('GET', $pincode);
+            return $this->byCode('GET', $pincode);
         } catch (Errors\BadRequestError $ex) {
             return response()->json(
                 ['error' => $ex->getMessage()],
@@ -21,7 +21,7 @@ class Postal extends Entity
     public function findByBranch($name)
     {
         try {
-            return $this->findByBranch('GET', $name);
+            return $this->byBranch('GET', $name);
         } catch (Errors\BadRequestError $ex) {
             return response()->json(
                 ['error' => $ex->getMessage()],

@@ -4,20 +4,22 @@ namespace Bhavinjr\Postal;
 
 class Entity extends Api
 {
+    const RESPONSE_ERROR_CODE    = 404;
+
     const RESPONSE_ERROR    = 'Error';
 
     const RESPONSE_SUCCESS  = 'Success';
 
     const EMPTY_MESSAGE     = 'No records found';
 
-    protected function findByCode($method, $pincode)
+    protected function byCode($method, $pincode)
     {
         $payloadUri = $this->getFullUrl().'pincode/'.$pincode;
 
         return $this->request($method, $payloadUri);
     }
 
-    protected function findByBranch($method, $name)
+    protected function byBranch($method, $name)
     {
         $payloadUri = $this->getFullUrl().'postoffice/'.$name;
 
@@ -42,7 +44,7 @@ class Entity extends Api
         $response = head(json_decode($response->getBody()->getContents(), true));
 
         if (isset($response['Status'])) {
-            if ($response['Status'] == self::RESPONSE_ERROR) {
+            if ($response['Status'] == self::RESPONSE_ERROR || $response['Status'] == self::RESPONSE_ERROR_CODE) {
                 return [
                     'status'    => strtolower(self::RESPONSE_ERROR),
                     'message'   => self::EMPTY_MESSAGE,
