@@ -1,0 +1,36 @@
+{
+    "name": "bhavinjr/laravel-postal",
+    "description": "Retrive the indian post office details based on pincode",
+    "keywords": [
+        "laravel", "laravel pincode", "pincode laravel", "indian postoffice", "pincode verification", "pincode validation"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bhavin Rudani",
+            "email": "bhavinrudani94@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0",
+        "illuminate/support": "^5.4 || ^6.0 || ^7.0 || ^8.0",
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bhavinjr\\Postal\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bhavinjr\\Postal\\Providers\\PostalServiceProvider"
+            ],
+            "aliases": {
+                "Postal": "Bhavinjr\\Postal\\Facades\\Postal"
+            }
+        }
+    }
+}
